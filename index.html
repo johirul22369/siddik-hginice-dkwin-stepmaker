@@ -43,17 +43,17 @@
         }
 
         /* -----------------------------------------
-           TOP HEADER (PREMIUM PROFILE & CENTERED NAME)
+           TOP HEADER (PROFILE, NAME & TELEGRAM CONTACT)
            ----------------------------------------- */
         .top-header {
             width: 100%;
             background: linear-gradient(135deg, #4c1d95 0%, #311060 100%);
-            padding: 16px 20px;
+            padding: 14px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
             flex-shrink: 0;
             border-bottom: 2px solid rgba(255, 215, 0, 0.3);
@@ -61,8 +61,8 @@
 
         /* 🔥 আল্ট্রা প্রিমিয়াম গ্লোয়িং প্রোফাইল পিকচার */
         .header-icon-box {
-            width: 56px;
-            height: 56px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             background: #000;
             display: flex;
@@ -86,16 +86,15 @@
             object-fit: cover;
         }
 
-        /* প্রিমিয়াম টাইটেল ও আইডি স্টাইল */
         .header-title-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 2px;
+            gap: 4px;
         }
 
         .header-title {
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 900;
             color: #ffffff;
             letter-spacing: 1.2px;
@@ -104,12 +103,25 @@
             text-align: center;
         }
 
-        .header-subtitle {
-            font-size: 12px;
-            font-weight: 700;
+        /* টেলিগ্রাম যোগাযোগ বাটন স্টাইল */
+        .telegram-contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(56, 189, 248, 0.15);
+            border: 1px solid #38bdf8;
+            padding: 4px 12px;
+            border-radius: 20px;
             color: #38bdf8;
-            letter-spacing: 0.5px;
-            text-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
+            font-size: 11.5px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+            transition: all 0.2s ease;
+        }
+
+        .telegram-contact-btn:hover {
+            background: rgba(56, 189, 248, 0.3);
         }
 
         /* -----------------------------------------
@@ -118,39 +130,38 @@
         .card-body {
             width: 92%;
             max-width: 420px;
-            margin: 16px auto;
+            margin: 12px auto;
             background: rgba(30, 41, 59, 0.85);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 18px 20px;
+            border-radius: 18px;
+            padding: 14px 18px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 12px;
             flex-shrink: 0;
         }
 
         .card-heading {
-            font-size: 16px;
+            font-size: 15.5px;
             font-weight: 800;
             color: #f1f5f9;
             text-align: center;
-            letter-spacing: 0.5px;
         }
 
         .input-group {
             display: flex;
             flex-direction: column;
-            gap: 5px;
+            gap: 4px;
         }
 
         .input-box {
             width: 100%;
-            padding: 12px 14px;
+            padding: 11px 14px;
             border: 1.5px solid #475569;
-            border-radius: 12px;
-            font-size: 14.5px;
+            border-radius: 10px;
+            font-size: 14px;
             font-weight: 700;
             color: #ffffff;
             outline: none;
@@ -170,18 +181,17 @@
 
         .calculate-btn {
             width: 100%;
-            padding: 13px;
+            padding: 12px;
             background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
             color: #ffffff;
             border: none;
-            border-radius: 12px;
-            font-size: 15px;
+            border-radius: 10px;
+            font-size: 14.5px;
             font-weight: 800;
             cursor: pointer;
             box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
             text-transform: capitalize;
             letter-spacing: 0.8px;
-            transition: all 0.2s ease;
         }
 
         .calculate-btn:active {
@@ -195,13 +205,13 @@
             display: flex;
             flex-direction: column;
             gap: 0px;
-            max-height: 280px;
+            max-height: 240px;
             overflow-y: auto;
         }
 
         .results-container:not(:empty) {
             border: 1px solid #475569;
-            border-radius: 10px;
+            border-radius: 8px;
             background: #0f172a;
         }
 
@@ -217,11 +227,11 @@
             background: #0f172a;
             border-bottom: 1px solid #1e293b;
             color: #f1f5f9;
-            padding: 10px 14px;
+            padding: 9px 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 14px;
+            font-size: 13.5px;
             font-weight: 700;
         }
 
@@ -236,8 +246,48 @@
         .step-value {
             color: #a78bfa;
             font-weight: 800;
-            font-size: 15px;
+            font-size: 14.5px;
             text-shadow: 0 0 8px rgba(167, 139, 250, 0.3);
+        }
+
+        /* -----------------------------------------
+           TRADING TIPS BOX (শিক্ষণীয় ট্রেডিং টেক্সট)
+           ----------------------------------------- */
+        .trading-tips-box {
+            width: 92%;
+            max-width: 420px;
+            margin: 0 auto 14px auto;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px dashed #38bdf8;
+            border-radius: 14px;
+            padding: 12px 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .tips-header {
+            font-size: 13px;
+            font-weight: 800;
+            color: #38bdf8;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tips-body {
+            font-size: 11.5px;
+            font-weight: 600;
+            color: #cbd5e1;
+            line-height: 1.4;
+        }
+
+        .tips-body ul {
+            margin-left: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
         }
 
         /* -----------------------------------------
@@ -245,11 +295,11 @@
            ----------------------------------------- */
         .app-footer {
             text-align: center;
-            font-size: 11.5px;
+            font-size: 11px;
             color: #64748b;
             font-weight: 700;
             margin-top: auto;
-            padding: 14px;
+            padding: 10px;
             background: #0f172a;
             letter-spacing: 0.5px;
         }
@@ -264,7 +314,7 @@
     <div class="app-container">
         
         <!-- =========================================
-             HEADER SECTION (Profile, Name & ID)
+             HEADER SECTION (Profile, Name & Contact)
              ========================================= -->
         <div class="top-header">
             <div class="header-icon-box">
@@ -272,7 +322,9 @@
             </div>
             <div class="header-title-container">
                 <div class="header-title">⚡ SIDDIK STEP MAKER ⚡</div>
-                <div class="header-subtitle">🆔 @Bdt5847</div>
+                <a href="https://t.me/Bdt5847" target="_blank" class="telegram-contact-btn">
+                    <span>💬 কোনো সমস্যা হলে যোগাযোগ করুন</span>
+                </a>
             </div>
         </div>
 
@@ -294,6 +346,22 @@
 
             <!-- Dynamic Steps Output Area (Initially Empty) -->
             <div class="results-container" id="steps-output-container"></div>
+        </div>
+
+        <!-- =========================================
+             TRADING EDUCATIONAL TIPS SECTION (ফাঁকা অংশে শিক্ষণীয় টেক্সট)
+             ========================================= -->
+        <div class="trading-tips-box">
+            <div class="tips-header">
+                <span>💡 ট্রেডিং ও মানি ম্যানেজমেন্ট টিপস:</span>
+            </div>
+            <div class="tips-body">
+                <ul>
+                    <li>সদা সর্বদা নিজের রিক্স ম্যানেজমেন্ট (Risk Management) নিয়ন্ত্রণে রাখুন।</li>
+                    <li>ইমোশন বা আবেগের বশবর্তী হয়ে কখনো ওভার-ট্রেডিং বা লস रिकভার করতে যাবেন না।</li>
+                    <li>প্রতিটি স্টেপে সঠিক ডিসিপ্লিন বজায় রাখলে লং-টার্মে প্রফিট করা সহজ হয়।</li>
+                </ul>
+            </div>
         </div>
 
         <!-- =========================================
