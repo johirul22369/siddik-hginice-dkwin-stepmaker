@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SIDDIK STEP MAKER - VIP Calculator</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500;700;800&family=Montserrat:wght@600;700;900&display=swap');
+
+        /* -----------------------------------------
+           CSS RESET & GLOBAL STYLING
+           ----------------------------------------- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Hind Siliguri', 'Montserrat', sans-serif;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100vh;
+            background: #0f172a;
+            color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* -----------------------------------------
+           APP LAYOUT CONTAINER
+           ----------------------------------------- */
+        .app-container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: radial-gradient(circle at top, #1e1b4b 0%, #0f172a 100%);
+            position: relative;
+            overflow-y: auto;
+        }
+
+        /* -----------------------------------------
+           TOP HEADER (PREMIUM PROFILE & CENTERED NAME)
+           ----------------------------------------- */
+        .top-header {
+            width: 100%;
+            background: linear-gradient(135deg, #4c1d95 0%, #311060 100%);
+            padding: 16px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            flex-shrink: 0;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        /* 🔥 আল্ট্রা প্রিমিয়াম গ্লোয়িং প্রোফাইল পিকচার */
+        .header-icon-box {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 3px solid #ffd700;
+            box-shadow: 0 0 15px #ffd700, 0 0 30px #ff3366, inset 0 0 10px #00ffff;
+            animation: profileGlow 2.5s infinite alternate;
+        }
+
+        @keyframes profileGlow {
+            0% { border-color: #ffd700; box-shadow: 0 0 10px #ffd700, 0 0 20px #ff3366; }
+            50% { border-color: #00ff88; box-shadow: 0 0 18px #00ff88, 0 0 30px #00ffff; }
+            100% { border-color: #da70d6; box-shadow: 0 0 10px #da70d6, 0 0 20px #ff3366; }
+        }
+
+        .header-icon-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* প্রিমিয়াম টাইটেল ও আইডি স্টাইল */
+        .header-title-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .header-title {
+            font-size: 18px;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            text-shadow: 0 0 12px rgba(255, 215, 0, 0.8), 0 0 25px rgba(138, 43, 226, 0.6);
+            text-align: center;
+        }
+
+        .header-subtitle {
+            font-size: 12px;
+            font-weight: 700;
+            color: #38bdf8;
+            letter-spacing: 0.5px;
+            text-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
+        }
+
+        /* -----------------------------------------
+           CARD BODY & INPUT CONTROLS
+           ----------------------------------------- */
+        .card-body {
+            width: 92%;
+            max-width: 420px;
+            margin: 16px auto;
+            background: rgba(30, 41, 59, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 18px 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            flex-shrink: 0;
+        }
+
+        .card-heading {
+            font-size: 16px;
+            font-weight: 800;
+            color: #f1f5f9;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .input-box {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1.5px solid #475569;
+            border-radius: 12px;
+            font-size: 14.5px;
+            font-weight: 700;
+            color: #ffffff;
+            outline: none;
+            background: #0f172a;
+            transition: all 0.2s ease;
+        }
+
+        .input-box::placeholder {
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .input-box:focus {
+            border-color: #8b5cf6;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.25);
+        }
+
+        .calculate-btn {
+            width: 100%;
+            padding: 13px;
+            background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+            color: #ffffff;
+            border: none;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+            text-transform: capitalize;
+            letter-spacing: 0.8px;
+            transition: all 0.2s ease;
+        }
+
+        .calculate-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* -----------------------------------------
+           DYNAMIC RESULTS CONTAINER (শুরুতে খালি, গ্যাপহীন)
+           ----------------------------------------- */
+        .results-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0px;
+            max-height: 280px;
+            overflow-y: auto;
+        }
+
+        .results-container:not(:empty) {
+            border: 1px solid #475569;
+            border-radius: 10px;
+            background: #0f172a;
+        }
+
+        .results-container::-webkit-scrollbar {
+            width: 4px;
+        }
+        .results-container::-webkit-scrollbar-thumb {
+            background: #475569;
+            border-radius: 4px;
+        }
+
+        .step-result-row {
+            background: #0f172a;
+            border-bottom: 1px solid #1e293b;
+            color: #f1f5f9;
+            padding: 10px 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .step-result-row:last-child {
+            border-bottom: none;
+        }
+
+        .step-label {
+            color: #94a3b8;
+        }
+
+        .step-value {
+            color: #a78bfa;
+            font-weight: 800;
+            font-size: 15px;
+            text-shadow: 0 0 8px rgba(167, 139, 250, 0.3);
+        }
+
+        /* -----------------------------------------
+           FOOTER STYLING
+           ----------------------------------------- */
+        .app-footer {
+            text-align: center;
+            font-size: 11.5px;
+            color: #64748b;
+            font-weight: 700;
+            margin-top: auto;
+            padding: 14px;
+            background: #0f172a;
+            letter-spacing: 0.5px;
+        }
+
+        .app-footer span {
+            color: #38bdf8;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <!-- =========================================
+             HEADER SECTION (Profile, Name & ID)
+             ========================================= -->
+        <div class="top-header">
+            <div class="header-icon-box">
+                <img src="https://cdn.imageurlgenerator.com/uploads/c1a51603-836b-4307-abe9-140f47b94444.jpg" alt="Profile Icon">
+            </div>
+            <div class="header-title-container">
+                <div class="header-title">⚡ SIDDIK STEP MAKER ⚡</div>
+                <div class="header-subtitle">🆔 @Bdt5847</div>
+            </div>
+        </div>
+
+        <!-- =========================================
+             MAIN CALCULATOR CARD SECTION
+             ========================================= -->
+        <div class="card-body">
+            <div class="card-heading">🎯 Step হিসাব করুন</div>
+            
+            <div class="input-group">
+                <input type="number" id="balance-input" class="input-box" placeholder="মোট ব্যালেন্স লিখুন">
+            </div>
+            
+            <div class="input-group">
+                <input type="number" id="steps-count-input" class="input-box" placeholder="মোট Step সংখ্যা" value="7">
+            </div>
+
+            <button class="calculate-btn" onclick="generateSteps()">Calculate Now</button>
+
+            <!-- Dynamic Steps Output Area (Initially Empty) -->
+            <div class="results-container" id="steps-output-container"></div>
+        </div>
+
+        <!-- =========================================
+             FOOTER SECTION
+             ========================================= -->
+        <div class="app-footer">
+            🔥 Powered by <span>SIDDIK VIP System</span> | @Bdt5847 🔥
+        </div>
+    </div>
+
+    <!-- =========================================
+         JAVASCRIPT CALCULATION ENGINE
+         ========================================= -->
+    <script>
+        function generateSteps() {
+            let balance = parseFloat(document.getElementById('balance-input').value);
+            let totalSteps = parseInt(document.getElementById('steps-count-input').value);
+            let container = document.getElementById('steps-output-container');
+
+            // Validation for Balance
+            if (isNaN(balance) || balance <= 0) {
+                container.innerHTML = `<div style="text-align: center; color: #f87171; font-size: 13px; font-weight: 700; padding: 12px; background: rgba(248, 113, 113, 0.1); border-radius: 8px;">⚠️ দয়া করে সঠিক ব্যালেন্স লিখুন!</div>`;
+                return;
+            }
+
+            // Validation for Steps Count (Support up to 20 steps)
+            if (isNaN(totalSteps) || totalSteps <= 0 || totalSteps > 20) {
+                container.innerHTML = `<div style="text-align: center; color: #f87171; font-size: 13px; font-weight: 700; padding: 12px; background: rgba(248, 113, 113, 0.1); border-radius: 8px;">⚠️ ১ থেকে ২০ এর মধ্যে স্টেপ সংখ্যা দিন!</div>`;
+                return;
+            }
+
+            // Progressive Multiplier Logic for Step Breakdown (Factor 2.0)
+            let factor = 2.0; 
+            let baseWeights = [];
+            let totalWeight = 0;
+
+            for (let i = 0; i < totalSteps; i++) {
+                let weight = Math.pow(factor, i);
+                baseWeights.push(weight);
+                totalWeight += weight;
+            }
+
+            let htmlContent = "";
+            let allocatedSum = 0;
+
+            for (let i = 0; i < totalSteps; i++) {
+                let stepAmount = (balance * (baseWeights[i] / totalWeight));
+                
+                // Adjusting minor rounding discrepancies on the final step
+                if (i === totalSteps - 1) {
+                    stepAmount = balance - allocatedSum;
+                } else {
+                    allocatedSum += stepAmount;
+                }
+
+                htmlContent += `
+                    <div class="step-result-row">
+                        <span class="step-label">Step ${i + 1}:</span>
+                        <span class="step-value">${stepAmount.toFixed(2)} ৳</span>
+                    </div>
+                `;
+            }
+
+            container.innerHTML = htmlContent;
+        }
+    </script>
+</body>
+</html>
